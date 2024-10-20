@@ -1,9 +1,17 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
+import { useState, useEffect } from 'react';
 
-export default function DrawerApp(props) {
+const DrawerApp = (props) => {
   const {open, toggleDrawer} = props;
+  const [cartItems, setCartItems] = useState([]);
+console.log(cartItems);
+
+
+  useEffect(()=>{
+    const cartItemArr = localStorage.getItem("cartList");
+    setCartItems(cartItemArr);
+  }, [])
 
   return (
     <div>
@@ -15,3 +23,5 @@ export default function DrawerApp(props) {
     </div>
   );
 }
+
+export default DrawerApp;
